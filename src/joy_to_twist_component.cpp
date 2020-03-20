@@ -13,7 +13,7 @@ namespace joy_to_twist
         get_parameter("longitudal_input_ratio",longitudal_input_ratio_);
 
         joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>("/joy",1,std::bind(&JoyToTwistComponent::JoyCallback,this,std::placeholders::_1));
-        twist_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel",1);
+        twist_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/target_twist",1);
     }
 
     void JoyToTwistComponent::JoyCallback(const sensor_msgs::msg::Joy::SharedPtr msg)

@@ -1,5 +1,7 @@
-#ifndef JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_H_INCLUDED
-#define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_H_INCLUDED
+// Copyright (c) 2020 OUXT Polaris
+
+#ifndef JOY_TO_TWIST__JOY_TO_TWIST_COMPONENT_H_
+#define JOY_TO_TWIST__JOY_TO_TWIST_COMPONENT_H_
 
 #if __cplusplus
 extern "C" {
@@ -16,11 +18,14 @@ extern "C" {
         #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_IMPORT __declspec(dllimport)
     #endif
     #ifdef JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_BUILDING_DLL
-        #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_EXPORT
+        #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC \
+  JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_EXPORT
     #else
-        #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_IMPORT
+        #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC \
+  JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_IMPORT
     #endif
-        #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC_TYPE JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC
+        #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC_TYPE \
+  JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC
         #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_LOCAL
 #else
     #define JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_EXPORT __attribute__ ((visibility("default")))
@@ -36,7 +41,7 @@ extern "C" {
 #endif
 
 #if __cplusplus
-} // extern "C"
+}  // extern "C"
 #endif
 
 #include <rclcpp/rclcpp.hpp>
@@ -45,19 +50,21 @@ extern "C" {
 
 namespace joy_to_twist
 {
-    class JoyToTwistComponent: public rclcpp::Node
-    {
-    public:
-        JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC
-        explicit JoyToTwistComponent(const rclcpp::NodeOptions & options);
-    private:
-        rcl_interfaces::msg::SetParametersResult paramCallback(const std::vector<rclcpp::Parameter> & params);
-        void JoyCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
-        rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
-        rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_pub_;
-        double longitudal_input_ratio_;
-        double lateral_input_ratio_;
-    };
-}
+class JoyToTwistComponent : public rclcpp::Node
+{
+public:
+  JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_PUBLIC
+  explicit JoyToTwistComponent(const rclcpp::NodeOptions & options);
 
-#endif  //JOY_TO_TWIST_JOY_TO_TWIST_COMPONENT_H_INCLUDED
+private:
+  rcl_interfaces::msg::SetParametersResult paramCallback(
+    const std::vector<rclcpp::Parameter> & params);
+  void JoyCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
+  rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
+  rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_pub_;
+  double longitudal_input_ratio_;
+  double lateral_input_ratio_;
+};
+}  // namespace joy_to_twist
+
+#endif  //JOY_TO_TWIST__JOY_TO_TWIST_COMPONENT_H_

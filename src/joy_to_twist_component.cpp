@@ -56,4 +56,4 @@ rcl_interfaces::msg::SetParametersResult JoyToTwistComponent::paramCallback(
   result->reason = "";
   return *result;
 }
-}
+}  // namespace joy_to_twist

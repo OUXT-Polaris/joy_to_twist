@@ -47,6 +47,7 @@ extern "C" {
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <sensor_msgs/msg/joy.hpp>
+#include <vector>
 
 namespace joy_to_twist
 {
@@ -67,4 +68,4 @@ private:
 };
 }  // namespace joy_to_twist
 
-#endif  //JOY_TO_TWIST__JOY_TO_TWIST_COMPONENT_H_
+#endif  // JOY_TO_TWIST__JOY_TO_TWIST_COMPONENT_H_

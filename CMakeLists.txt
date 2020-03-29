@@ -45,7 +45,7 @@ add_executable(joy_to_twist_node
   src/joy_to_twist_node.cpp
 )
 ament_target_dependencies(joy_to_twist_node
-  rclcpp 
+  rclcpp
   rclcpp_components)
 target_link_libraries(joy_to_twist_node joy_to_twist_component)
 
@@ -55,7 +55,7 @@ install(TARGETS
 )
 
 install(TARGETS
-  joy_to_twist_node 
+  joy_to_twist_node
   DESTINATION lib/joy_to_twist
 )
 

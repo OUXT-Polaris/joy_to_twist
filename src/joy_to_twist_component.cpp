@@ -22,7 +22,7 @@ namespace joy_to_twist
 JoyToTwistComponent::JoyToTwistComponent(const rclcpp::NodeOptions & options)
 : Node("joy_to_twist", options)
 {
-  this->set_on_parameters_set_callback(std::bind(&JoyToTwistComponent::paramCallback, this,
+  param_handler_ptr_ = this->add_on_set_parameters_callback(std::bind(&JoyToTwistComponent::paramCallback, this,
     std::placeholders::_1));
 
   declare_parameter("lateral_input_ratio", 0.3);

@@ -22,8 +22,10 @@ namespace joy_to_twist
 JoyToTwistComponent::JoyToTwistComponent(const rclcpp::NodeOptions & options)
 : Node("joy_to_twist", options)
 {
-  this->set_on_parameters_set_callback(std::bind(&JoyToTwistComponent::paramCallback, this,
-    std::placeholders::_1));
+  param_handler_ptr_ = this->add_on_set_parameters_callback(
+    std::bind(
+      &JoyToTwistComponent::paramCallback, this,
+      std::placeholders::_1));
 
   declare_parameter("lateral_input_ratio", 0.3);
   get_parameter("lateral_input_ratio", lateral_input_ratio_);
@@ -31,8 +33,9 @@ JoyToTwistComponent::JoyToTwistComponent(const rclcpp::NodeOptions & options)
   get_parameter("longitudal_input_ratio", longitudal_input_ratio_);
 
   joy_sub_ =
-    this->create_subscription<sensor_msgs::msg::Joy>("/joy", 1,
-      std::bind(&JoyToTwistComponent::JoyCallback, this, std::placeholders::_1));
+    this->create_subscription<sensor_msgs::msg::Joy>(
+    "/joy", 1,
+    std::bind(&JoyToTwistComponent::JoyCallback, this, std::placeholders::_1));
   twist_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("/target_twist", 1);
 }
 

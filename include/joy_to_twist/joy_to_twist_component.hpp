@@ -77,6 +77,7 @@ private:
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_pub_;
   double longitudal_input_ratio_;
   double lateral_input_ratio_;
+  rclcpp::node_interfaces::OnSetParametersCallbackHandle::SharedPtr param_handler_ptr_;
 };
 }  // namespace joy_to_twist
 

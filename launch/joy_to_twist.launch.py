@@ -29,14 +29,14 @@ def generate_launch_description():
     description = LaunchDescription([
         Node(
             package='joy',
-            node_executable='joy_node',
-            node_name='joy_node',
+            executable='joy_node',
+            name='joy_node',
             parameters=[joy_param_file],
             output='screen'),
         Node(
             package='joy_to_twist',
-            node_executable='joy_to_twist_node',
-            node_name='joy_to_twist_node',
+            executable='joy_to_twist_node',
+            name='joy_to_twist_node',
             output='screen'),
     ])
     return description

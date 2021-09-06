@@ -59,10 +59,6 @@ install(TARGETS
   DESTINATION lib/joy_to_twist
 )
 
-install(DIRECTORY config
-  DESTINATION share/${PROJECT_NAME}
-)
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

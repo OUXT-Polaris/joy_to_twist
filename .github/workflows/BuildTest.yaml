@@ -44,10 +44,7 @@ jobs:
           colcon-defaults: |
             {
               "build": {
-                "mixin": ["coverage-gcc", "coverage-pytest"]
-              },
-              "test": {
-                "mixin": ["coverage-pytest"]
+                "mixin": ["coverage-gcc"]
               }
             }
           # If possible, pin the repository in the workflow to a specific commit to avoid
@@ -62,10 +59,7 @@ jobs:
           colcon-defaults: |
             {
               "build": {
-                "mixin": ["coverage-gcc", "coverage-pytest"]
-              },
-              "test": {
-                "mixin": ["coverage-pytest"]
+                "mixin": ["coverage-gcc"]
               }
             }
           # If possible, pin the repository in the workflow to a specific commit to avoid
@@ -80,10 +74,7 @@ jobs:
           colcon-defaults: |
             {
               "build": {
-                "mixin": ["coverage-gcc", "coverage-pytest"]
-              },
-              "test": {
-                "mixin": ["coverage-pytest"]
+                "mixin": ["coverage-gcc"]
               }
             }
           # If possible, pin the repository in the workflow to a specific commit to avoid

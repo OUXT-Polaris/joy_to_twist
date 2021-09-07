@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include <joy_to_twist/joy_to_twist_component.hpp>
-#include <rclcpp/rclcpp.hpp>
 #include <memory>
+#include <rclcpp/rclcpp.hpp>
 
 int main(int argc, char * argv[])
 {
